@@ -1,4 +1,5 @@
 {:deps {org.clojure/clojurescript {:mvn/version "1.11.54"}
-				funcool/promesa {:mvn/version "10.0.594"}}
+				funcool/promesa {:mvn/version "10.0.594"}
+				org.babashka/sci {:mvn/version "0.8.40"}}
  :aliases {:watch    {:main-opts ["-m" "simpleui.main" "-w"]}
 					 :release  {:main-opts ["-m" "simpleui.main"]}}}
