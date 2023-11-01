@@ -8,7 +8,7 @@
   	((if watch? b/watch b/build)
 	  	"src"
 		  {:closure-output-charset "us-ascii"
-  		 :optimizations (if watch? :simple :advanced)
+  		 :optimizations :advanced
 	  	 :output-to "cljs/main.js"
 		   :output-dir "cljs"
   		 :browser-repl false
