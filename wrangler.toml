@@ -1,3 +1,3 @@
 name = "simpleui"
-main = "index.js"
+main = "cljs/main.js"
 compatibility_date = "2022-05-03"
