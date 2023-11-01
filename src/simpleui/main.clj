@@ -13,5 +13,6 @@
 		   :output-dir "cljs"
   		 :browser-repl false
 	  	 :main 'simpleui.app
+			 :externs ["src/externs.js"]
 			 :output-wrapper "%s\n\nexport default {\nfetch: simpleui.app.fetch\n};"
   		 :watch-fn #(prn (sh "tput" "bel"))})))

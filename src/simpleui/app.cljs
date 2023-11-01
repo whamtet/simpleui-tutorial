@@ -1,8 +1,13 @@
-(ns simpleui.app)
+(ns simpleui.app
+	(:require
+		[promesa.core :as p]))
 
 (def Router (aget (js/require "itty-router") "Router"))
 (def router (Router.))
 
-(.get router "/" #(js/Response. "hia"))
+(.post router "/"
+			(fn [req]
+				(p/let [body (.text req)]
+					(js/Response. body))))
 
-(def ^:export fetch (aget router "handle"))
+(def ^:export fetch (.-handle router))
