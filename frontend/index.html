@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Simple UI</title>
@@ -9,15 +9,14 @@
 	<link rel="icon" type="image/x-icon" href="logo_dark.svg">
 </head>
 <body>
-<div class="flex flex-col h-full w-full bg-white dark:bg-slate-900">
+<div class="bg-white dark:bg-slate-900">
 	<div class="xl:w-[1080px] lg:w-[980px] md:w-[700px] sm:w-[600px] w-full mx-auto">
 		<div id="page1" class="h-screen">
-  		<div class="xl:my-10 lg:my-5 md:my-5 my-3 mx-auto w-full px-2 lg:px-0 flex flex-row items-center justify-between">
-	  		<div class="flex flex-row items-center">
-		  		<img class="w-12 mr-1 lg:w-20 lg:mr-2" src="logo.svg">
-			  	<h1 class="lg:text-5xl text-2xl font-bold font-sans text-slate-700 dark:text-white tracking-tighter">Simple UI</h1>
-  			</div>
-	  	</div>
+
+  		<div class="xl:my-10 md:my-5 my-3 px-2 lg:px-0 flex flex-row items-center">
+        <img class="w-12 mr-1 lg:w-20 lg:mr-2" src="logo.svg">
+        <h1 class="lg:text-5xl text-2xl font-bold font-sans text-slate-700 dark:text-white tracking-tighter">Simple UI</h1>
+  	  </div>
 
   		<p>Simple UI makes it easy to build Single Page Applications (SPAs) without writing any javascript.</p>
 	  	<p class="mb-6">Simple UI is based on the Clojure programming language.  If you are not familiar with Clojure,
@@ -30,11 +29,11 @@
 	  			Start Tutorial
 		  	</a>
 
-  			<button
+  			<a href="http://whamtet.github.io/ctmx/" target="_blank"
 	  			class="ml-6 middle none center rounded-lg bg-blue-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-blue-500/20 transition-all hover:shadow-lg hover:shadow-blue-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 		  	>
-			  	Straight to Docs
-			  </button>
+			  	Docs
+			  </a>
 		  </p>
 	  </div>
 		<div id="page2" class="h-screen">
