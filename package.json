@@ -5,13 +5,15 @@
 	"scripts": {
 		"deploy": "wrangler deploy",
 		"dev": "wrangler dev",
-		"test": "vitest"
+		"test": "vitest",
+		"styles-watch": "tailwindcss -i src/input.css -o frontend/styles.css --watch"
 	},
 	"dependencies": {
 		"itty-router": "^2.6.1"
 	},
 	"devDependencies": {
 		"vitest": "^0.31.0",
-		"wrangler": "^3.0.0"
+		"wrangler": "^3.0.0",
+		"tailwindcss": "^3.0.23"
 	}
 }
