@@ -6,7 +6,8 @@
 		"deploy": "wrangler deploy",
 		"dev": "wrangler dev",
 		"test": "vitest",
-		"styles-watch": "tailwindcss -i src/input.css -o frontend/styles.css --watch"
+		"styles-watch": "tailwindcss -i src/input.css -o frontend/styles.css --watch",
+		"styles": "tailwindcss -i src/input.css -o frontend/styles.css"
 	},
 	"dependencies": {
 		"itty-router": "^2.6.1"
