@@ -55,10 +55,23 @@
 				</button>
 			</div>
 		</div>
-		<div class="sm:w-1/2 w-full p-3">ok</div>
+		<div class="sm:w-1/2 w-full p-3">
+			<div class="border-b border-gray-300 mb-6">
+				<code>Code Output</code>
+				<div id="code-output"> </div>
+			</div>
+
+			<div id="editor" class="w-full h-48">(defcomponent main [req]
+  [:div#fix-my-id.and-my-class "fix my text"])</div>
+		</div>
 	</div>
 </div>
 <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
 <script src="https://unpkg.com/htmx.org@1.9.7"></script>
+<script src="ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+	var editor = ace.edit("editor");
+	editor.session.setMode("ace/mode/clojure");
+</script>
 </body>
 </html>
