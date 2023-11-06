@@ -14,5 +14,6 @@
   		 :browser-repl false
 	  	 :main 'simpleui.app
 			 :externs ["src/externs.js"]
-			 :output-wrapper "%s\n\nexport default {\nfetch: simpleui.app.fetch\n};"
+			 ;:output-wrapper "%s\nexports.handler = simpleui.app.handler"
+			 :target :bundle
   		 :watch-fn #(prn (sh "tput" "bel"))})))
