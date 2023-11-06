@@ -27,7 +27,7 @@
 				</p>
 
 				<button
-					class="ml-6 middle none center rounded-lg bg-clj-blue py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-blue/20 transition-all hover:shadow-lg hover:shadow-clj-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					class="ml-6 rounded-lg bg-clj-blue py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-blue/20 transition-all hover:shadow-lg hover:shadow-clj-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 					_="on click take .hidden from #test1 for #intro"
 				>
 					Get Started
@@ -35,7 +35,7 @@
 
 				<a
 					href="http://whamtet.github.io/ctmx/"
-					class="ml-6 middle none center rounded-lg bg-clj-green py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-green/20 transition-all hover:shadow-lg hover:shadow-clj-green/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					class="ml-6 rounded-lg bg-clj-green py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-green/20 transition-all hover:shadow-lg hover:shadow-clj-green/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 				>
 					Docs
 				</a>
@@ -49,7 +49,11 @@
 				</p>
 
 				<button
-					class="middle none center rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					class="rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					_="on click set my.value to editor.getValue()"
+					hx-post="fuck"
+					name="code"
+					hx-target="#output"
 				>
 					Run tests
 				</button>
@@ -57,7 +61,7 @@
 		</div>
 		<div class="sm:w-1/2 w-full p-3">
 			<div class="border-b border-gray-300 mb-6">
-				<code>Code Output</code>
+				<code id="output">Code Output</code>
 				<div id="code-output"> </div>
 			</div>
 
