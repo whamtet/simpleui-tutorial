@@ -5,6 +5,7 @@
 	<title>Simple UI</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="styles.css" rel="stylesheet">
+	<link rel="icon" type="image/x-icon" href="logo_dark.svg">
 </head>
 <body>
 <div class="xl:w-[1080px] lg:w-[980px] md:w-[700px] sm:w-[600px] w-full mx-auto">
@@ -14,19 +15,20 @@
 				<img src="logo.svg" class="h-full mr-3" />
 				<h3 class="text-5xl">Simple UI</h3>
 			</div>
-			<div class="p-3">
+			<div id="intro" class="p-3 hidden">
 				<h4 class="text-2xl font-semibold mb-5">SPAs without Javascript</h4>
 				<p class="mb-3">
 					Did you know you can create Single Page Applications (SPAs) without Javascript?
 				</p>
 				<p class="mb-6">
 					Try SimpleUI for a for a smoother, more productive workflow. Simple UI is based on Clojure,
-					<a class="text-clj-blue" href="https://tryclojure.org" target="_blank">take a quick look</a>
+					<a href="https://tryclojure.org" target="_blank">take a quick look</a>
 					if you have not used Clojure before.
 				</p>
 
 				<button
 					class="ml-6 middle none center rounded-lg bg-clj-blue py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-blue/20 transition-all hover:shadow-lg hover:shadow-clj-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					_="on click take .hidden from #test1 for #intro"
 				>
 					Get Started
 				</button>
@@ -37,11 +39,26 @@
 				>
 					Docs
 				</a>
+			</div>
+			<div id="test1" class="p-3">
+				<h4 class="text-2xl font-semibold mb-5">Display with Hiccup</h4>
+				<p class="mb-3">
+					Simple UI uses
+					<a href="https://github.com/weavejester/hiccup" target="blank">hiccup</a>
+					to render HTML server side.  Fix the code and run the tests.
+				</p>
 
+				<button
+					class="middle none center rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+				>
+					Run tests
+				</button>
 			</div>
 		</div>
 		<div class="sm:w-1/2 w-full p-3">ok</div>
 	</div>
 </div>
+<script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+<script src="https://unpkg.com/htmx.org@1.9.7"></script>
 </body>
 </html>
