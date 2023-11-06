@@ -49,7 +49,7 @@
 				</p>
 
 				<button
-					class="rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					class="mb-5 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 					_="on click set my.value to editor.getValue()"
 					hx-post="fuck"
 					name="code"
@@ -57,16 +57,26 @@
 				>
 					Run tests
 				</button>
+				<div id="tests0" class="flex flex-col gap-2">
+					<code>let idElement = document.querySelector('#my-id');</code>
+					<div><code class="mr-3">assert(exists(idElement))</code><span id="tests00"></span></div>
+					<code>let classElement = document.querySelector('.my-class');</code>
+					<div><code class="mr-3">assert(exists(classElement))</code><span id="tests01"></span></div>
+					<code>let innerText = classElement && classElement.innerText;</code>
+					<div><code class="mr-3">assert(innerText === 'my text');</code><span id="tests02"></span></div>
+				</div>
 			</div>
 		</div>
 		<div class="sm:w-1/2 w-full p-3">
-			<div class="border-b border-gray-300 mb-6">
-				<code id="output">Code Output</code>
-				<div id="code-output"> </div>
-			</div>
 
-			<div id="editor" class="w-full h-48">(defcomponent main [req]
+			<code class="border-b border-gray-300">Source</code>
+			<div id="editor" class="w-full h-1/2">(defcomponent main [req]
   [:div#fix-my-id.and-my-class "fix my text"])</div>
+
+  		<div class="border-b border-gray-300 mb-6">
+	  		<code id="output">Code Output</code>
+		  	<div id="code-output"> </div>
+  		</div>
 		</div>
 	</div>
 </div>
@@ -74,8 +84,9 @@
 <script src="https://unpkg.com/htmx.org@1.9.7"></script>
 <script src="ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
-	var editor = ace.edit("editor");
+	const editor = ace.edit("editor");
 	editor.session.setMode("ace/mode/clojure");
 </script>
+<script src="tests.js"></script>
 </body>
 </html>
