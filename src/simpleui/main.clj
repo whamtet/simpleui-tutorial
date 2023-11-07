@@ -14,6 +14,5 @@
   		 :browser-repl false
 	  	 :main 'simpleui.app
 			 :externs ["src/externs.js"]
-			 ;:output-wrapper "%s\nexports.handler = simpleui.app.handler"
 			 :target :bundle
   		 :watch-fn #(prn (sh "tput" "bel"))})))

@@ -1,13 +1,25 @@
-const Router = require('itty-router').Router;
 const handler = require('./cljs/main.js').simpleui.app.handler;
-// Create a new router
-const router = Router();
+import { Router, createCors, error, json } from 'itty-router'
 
-/*
-Our index route, a simple hello world.
-*/
-router.post('/', handler);
+const { preflight, corsify } = createCors({
+	origins: ['*'],
+	methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+})
+
+const router = Router()
+
+router
+	// embed preflight upstream to handle all OPTIONS requests
+	.all('*', preflight)
+
+	.post('*', handler)
 
 export default {
-	fetch: router.handle,
-};
+	fetch: (...args) => router
+		.handle(...args)
+		.then(json)
+
+		// embed corsify downstream to attach CORS headers
+		.then(corsify)
+		.catch(error)
+}
