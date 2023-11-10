@@ -7,10 +7,13 @@
 		"dev": "wrangler dev",
 		"test": "vitest",
 		"styles-watch": "tailwindcss -i src/input.css -o frontend/styles.css --watch",
-		"styles": "tailwindcss -i src/input.css -o frontend/styles.css"
+		"styles": "tailwindcss -i src/input.css -o frontend/styles.css",
+		"format": "nbb format.cljs"
 	},
 	"dependencies": {
-		"itty-router": "^4.0.23"
+		"highlight.js": "^11.9.0",
+		"itty-router": "^4.0.23",
+		"nbb": "^1.2.179"
 	},
 	"devDependencies": {
 		"tailwindcss": "^3.3.5",
