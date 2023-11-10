@@ -7,7 +7,7 @@
 	<link href="styles.css" rel="stylesheet">
 	<link rel="icon" type="image/x-icon" href="logo_dark.svg">
 </head>
-<body>
+<body hx-ext="include-vals">
 <div class="xl:w-[1080px] lg:w-[980px] md:w-[700px] sm:w-[600px] w-full mx-auto">
 	<div class="border border-gray-300 rounded-md shadow-2xl flex flex-wrap my-2">
 		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300">
@@ -50,9 +50,8 @@
 
 				<button
 					class="mb-5 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-					_="on click set my.value to editor.getValue()"
+					include-vals="code: editor.getValue()"
 					hx-post="http://localhost:8787"
-					name="code"
 					hx-target="#output"
 				>
 					Run tests
@@ -81,7 +80,8 @@
 	</div>
 </div>
 <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
-<script src="https://unpkg.com/htmx.org@1.9.7"></script>
+<script src="https://unpkg.com/htmx.org@1.9.8"></script>
+<script src="https://unpkg.com/htmx.org/dist/ext/include-vals.js"></script>
 <script src="ace.js" type="text/javascript" charset="utf-8"></script>
 <script>
 	var editor = ace.edit("editor");
