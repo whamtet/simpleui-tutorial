@@ -1,14 +1,12 @@
 {
-	"name": "template-worker-router",
-	"version": "0.0.0",
-	"private": true,
 	"scripts": {
 		"deploy": "wrangler deploy",
 		"dev": "wrangler dev",
 		"test": "vitest",
 		"styles-watch": "tailwindcss -i src/input.css -o frontend/styles.css --watch",
 		"styles": "tailwindcss -i src/input.css -o frontend/styles.css",
-		"format": "nbb format.cljs"
+		"format-watch": "nbb -m format --watch",
+		"format": "nbb -m format"
 	},
 	"dependencies": {
 		"highlight.js": "^11.9.0",
