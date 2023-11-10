@@ -1,5 +1,6 @@
-{:deps {org.clojure/clojurescript {:mvn/version "1.11.54"}
+{:deps {org.clojure/clojurescript {:mvn/version "1.10.866"}
 				funcool/promesa {:mvn/version "10.0.594"}
-				org.babashka/sci {:mvn/version "0.8.40"}}
+				org.babashka/sci {:mvn/version "0.8.40"}
+				ctmx/ctmx {:local/root "../../WebstormProjects/ctmx"}}
  :aliases {:watch    {:main-opts ["-m" "simpleui.main" "-w"]}
 					 :release  {:main-opts ["-m" "simpleui.main"]}}}

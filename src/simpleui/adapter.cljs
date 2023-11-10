@@ -16,4 +16,10 @@
 	(p/let [body (get-body req)]
 		{:params body
 		 :uri (-> req .-url js/URL. .-pathname)
-		 :request-method (.-method req)}))
+		 :request-method (-> req .-method .toLowerCase keyword)}))
+
+(defn <-req [{:keys [body status headers]}]
+	(->> {:status status
+				:headers headers}
+			 js->clj
+			 (js/Response. body)))

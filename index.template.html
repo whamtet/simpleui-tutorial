@@ -50,8 +50,8 @@
 
 				<button
 					class="mb-5 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-					include-vals="code: editor.getValue()"
-					hx-post="http://localhost:8787"
+					include-vals="code: editor.getValue(), tests: '#tests0'"
+					hx-post="http://localhost:8787/main"
 					hx-target="#output"
 				>
 					Run tests
@@ -69,7 +69,7 @@
 		<div class="sm:w-1/2 w-full p-3">
 
 			<code class="border-b border-gray-300">Source</code>
-			<div id="editor" class="w-full h-1/2">(defcomponent main [req]
+			<div id="editor" class="w-full h-1/2">(defcomponent ^:endpoint main [req]
   [:div#fix-my-id.and-my-class "fix my text"])</div>
 
   		<div class="border-b border-gray-300 mb-6">

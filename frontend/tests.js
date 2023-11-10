@@ -1,5 +1,5 @@
-const passSpan = '<span style="color: green; align-self: center; width: 4.5em; margin-left: auto;">🟢 pass</span>';
-const failSpan = '<span style="color: red; align-self: center; width: 4.5em; margin-left: auto;">🔴 uh-oh</span>';
+const passSpan = '<span class="test-result" style="color: green; align-self: center; width: 4.5em; margin-left: auto;">🟢 pass</span>';
+const failSpan = '<span class="test-result" style="color: red; align-self: center; width: 4.5em; margin-left: auto;">🔴 uh-oh</span>';
 
 let testId = '';
 let assertCounter = 0;
@@ -17,6 +17,10 @@ const evalDiv = id => {
 	testId = id;
 	assertCounter = 0;
 	allPass = true;
+
+	for (el of document.querySelectorAll('.test-result')) {
+		el.outerHTML = '';
+	}
 
 	const codeDiv = document.querySelector(id);
 	eval(codeDiv.innerText);
