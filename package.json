@@ -4,7 +4,7 @@
 		"dev": "wrangler dev",
 		"test": "vitest",
 		"styles-watch": "tailwindcss -i src/input.css -o frontend/styles.css --watch",
-		"styles": "tailwindcss -i src/input.css -o frontend/styles.css",
+		"styles": "tailwindcss -i src/input.css -o frontend/styles.css -m",
 		"format-watch": "nbb -m format --watch",
 		"format": "nbb -m format"
 	},
