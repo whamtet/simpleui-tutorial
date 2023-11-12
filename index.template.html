@@ -52,9 +52,9 @@
 					id="tests0-run"
 					class="mb-5 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 					hx-post="http://localhost:8787/main"
-					hx-target="#output"
+					hx-target="#output0"
 					hx-after="#tests0"
-					hx-editor="editor"
+					hx-editor="editor0"
 				>
 					Run tests
 				</button>
@@ -74,7 +74,7 @@
 					<div><code class="mr-3">/*hl*/ assert(exists(idElement))</code><span id="tests00"></span></div>
 					<code>/*hl*/ let classElement = $('.my-class');</code>
 					<div><code class="mr-3">/*hl*/ assert(exists(classElement))</code><span id="tests01"></span></div>
-					<code>/*hl*/ let innerText = classElement && classElement.innerText;</code>
+					<code>/*hl*/ let innerText = classElement.innerText;</code>
 					<div><code class="mr-3">/*hl*/ assert(innerText === 'my text')</code><span id="tests02"></span></div>
 				</div>
 
@@ -83,17 +83,14 @@
 		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
 
 			<code class="border-b border-gray-300">Source</code>
-			<div id="editor" class="w-full h-1/2">#_(defcomponent ^:endpoint main [req]
+			<div id="editor0" class="w-full h-1/2">(defcomponent ^:endpoint main [req]
   [:div#fix-my-id.and-my-class "fix my text"])
-
-(defcomponent ^:endpoint main [req]
-  [:div#my-id.my-class "my text"])
 			</div>
 
   		<div class="border-b border-gray-300 mb-6">
 	  		<code>Code Output</code>
   		</div>
-			<div id="output"> </div>
+			<div id="output0"> </div>
 		</div>
 	</div>
 
@@ -106,12 +103,65 @@
 	  		  <p class="mb-3">
 		  	    The key idea of SimpleUI is to expose UI components as endpoints.  Each one can update on
 			  		its own, just as if it was a frontend component.  Unlike with frontend frameworks there
-				  	is no js bundle to load.
+				  	is no js bundle because everything is rendered server side.
   				</p>
 	  		  <p class="mb-3">
 		  			Fix the code so that 'Goodbye' becomes 'Hello'.
 			  	</p>
+
+				<button
+					id="tests1-run"
+					class="mb-5 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					hx-post="http://localhost:8787/main"
+					hx-target="#output1"
+					hx-after="#tests1"
+					hx-editor="editor1"
+				>
+					Run tests
+				</button>
+
+				<p id="tests1-finish" class="hidden pb-5 mb-2 border-b border-gray-300">
+					Good effort!
+					<a
+						href="#problem3"
+						class="ml-6 rounded-lg bg-clj-green py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-green/20 transition-all hover:shadow-lg hover:shadow-clj-green/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					>
+						Next problem
+					</a>
+				</p>
+
+				<div id="tests1" class="flex flex-col gap-2">
+					<code>/*hl*/ let greetInput = $('#greet');</code>
+					<div><code class="mr-3">/*hl*/ assert(exists(greetInput))</code><span id="tests10"></span></div>
+					<code>/*hl*/ greetInput.value = 'Fred';</code>
+					<code>/*hl*/ let greetSubmit = $('#submit-greeting');</code>
+					<div><code class="mr-3">/*hl*/ assert(exists(greetSubmit))</code><span id="tests11"></span></div>
+					<code>/*hl*/ greetSubmit.click();</code>
+					<code>/*hl*/ await response();</code>
+					<code>/*hl*/ let responseDiv = $('#response');</code>
+					<div><code class="mr-3">/*hl*/ assert(exists(responseDiv))</code><span id="tests12"></span></div>
+					<div><code class="mr-3">/*hl*/ assert(responseDiv.innerText === 'Hello Fred')</code><span id="tests13"></span></div>
+				</div>
 			</div>
+		</div>
+		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
+
+			<code class="border-b border-gray-300">Source</code>
+			<div id="editor1" class="w-full h-1/2">(defcomponent ^:endpoint greeting [req my-name]
+ [:div#response "Goodbye " my-name])
+
+(defcomponent ^:endpoint main [req]
+ [:form {:hx-post "greeting" :hx-target "#response"}
+  [:label "What is your name?"]
+  [:input#greet.mr {:type "text" :name "my-name"}]
+  [:input#submit-greeting {:type "submit"}]
+  (greeting req "")])
+			</div>
+
+			<div class="border-b border-gray-300 mb-6">
+				<code>Code Output</code>
+			</div>
+			<div id="output1"> </div>
 		</div>
 	</div>
 </div>
@@ -121,10 +171,13 @@
 <script src="ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="tests.js"></script>
 <script>
-	var editor = ace.edit('editor');
-	editor.session.setMode('ace/mode/clojure');
-	editors = {editor};
-	// _hyperscript.evaluate('take .hidden from #problem1 for #intro');
+	const editors = {};
+	for (let i = 0; i < 2; i++) {
+		const editor = ace.edit('editor' + i);
+		editor.session.setMode('ace/mode/clojure');
+		editors['editor' + i] = editor;
+	}
+	_hyperscript.evaluate('take .hidden from #problem1 for #intro');
 </script>
 </body>
 </html>

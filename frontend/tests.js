@@ -3,7 +3,6 @@ const failSpan = '<span class="test-result" style="color: red; align-self: cente
 
 let testId = '';
 let assertCounter = 0;
-let allPass = true;
 
 const $ = x => document.querySelector(x);
 
@@ -11,24 +10,28 @@ const assert = test => {
 	let resultDiv = $(testId + assertCounter);
 	resultDiv.innerHTML = test ? passSpan : failSpan;
 	assertCounter++;
-	allPass &= test;
+	if (!test) {
+		throw 'uh oh';
+	}
 };
 const exists = x => x !== null;
 
-const evalDiv = id => {
+const evalDiv = async id => {
 	testId = id;
 	assertCounter = 0;
-	allPass = true;
 
-	for (el of document.querySelectorAll('.test-result')) {
+	const codeDiv = $(id);
+	for (el of codeDiv.querySelectorAll('.test-result')) {
 		el.outerHTML = '';
 	}
 
-	const codeDiv = $(id);
-	eval(`(async () => {${codeDiv.innerText}})()`);
-
-	if (allPass) {
+	try {
+		await eval(`(async () => {${codeDiv.innerText}})()`);
 		$(id + '-run').classList.add('hidden');
 		$(id + '-finish').classList.remove('hidden');
+	} catch (e) {
+		if (e !== 'uh oh') {
+			throw e;
+		}
 	}
 };

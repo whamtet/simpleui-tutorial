@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+		.mr {
+				@apply mr-2
+		}
+}
+
 a {
 		color: #97B3F8;
 }
