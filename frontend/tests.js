@@ -23,5 +23,10 @@ const evalDiv = id => {
 	}
 
 	const codeDiv = document.querySelector(id);
-	eval(codeDiv.innerText);
+	eval(`(async () => {${codeDiv.innerText}})()`);
+
+	if (allPass) {
+		document.querySelector(id + '-run').classList.add('hidden');
+		document.querySelector(id + '-finish').classList.remove('hidden');
+	}
 };

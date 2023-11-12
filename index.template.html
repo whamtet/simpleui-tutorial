@@ -8,13 +8,14 @@
 	<link rel="icon" type="image/x-icon" href="logo_dark.svg">
 </head>
 <body hx-ext="include-vals">
+<!-- body width -->
 <div class="xl:w-[1080px] lg:w-[980px] md:w-[700px] sm:w-[600px] w-full mx-auto">
-	<div class="border border-gray-300 rounded-md shadow-2xl flex flex-wrap my-[2vh]">
+	<!-- page 1 -->
+	<div class="border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
+		<!-- left half -->
 		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
-			<div class="rounded-tl-md bg-slate-50 h-24 flex items-center p-3">
-				<img src="logo.svg" class="h-full mr-3" />
-				<h3 class="text-5xl">Simple UI</h3>
-			</div>
+			<!-- intro -->
+			<!-- header -->
 			<div id="intro" class="p-3">
 				<h4 class="text-2xl font-semibold mb-5">SPAs without Javascript</h4>
 				<p class="mb-3">
@@ -28,7 +29,7 @@
 
 				<button
 					class="ml-6 rounded-lg bg-clj-blue py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-blue/20 transition-all hover:shadow-lg hover:shadow-clj-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-					_="on click take .hidden from #test1 for #intro"
+					_="on click take .hidden from #problem1 for #intro"
 				>
 					Get Started
 				</button>
@@ -40,7 +41,7 @@
 					Docs
 				</a>
 			</div>
-			<div id="test1" class="p-3 hidden">
+			<div id="problem1" class="p-3 hidden">
 				<h4 class="text-2xl font-semibold mb-5">Display with Hiccup</h4>
 				<p class="mb-3">
 					Simple UI uses
@@ -49,6 +50,7 @@
 				</p>
 
 				<button
+					id="tests0-run"
 					class="mb-5 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 					include-vals="code: editor.getValue(), tests: '#tests0'"
 					hx-post="http://localhost:8787/main"
@@ -56,26 +58,49 @@
 				>
 					Run tests
 				</button>
+
+				<p id="tests0-finish" class="hidden pb-5 mb-2 border-b border-gray-300">
+					Good effort!
+					<a
+						href="#problem2"
+						class="ml-6 rounded-lg bg-clj-green py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-green/20 transition-all hover:shadow-lg hover:shadow-clj-green/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					>
+						Next problem
+					</a>
+				</p>
+
 				<div id="tests0" class="flex flex-col gap-2">
 					<code>/*hl*/ let idElement = document.querySelector('#my-id');</code>
 					<div><code class="mr-3">/*hl*/ assert(exists(idElement))</code><span id="tests00"></span></div>
 					<code>/*hl*/ let classElement = document.querySelector('.my-class');</code>
 					<div><code class="mr-3">/*hl*/ assert(exists(classElement))</code><span id="tests01"></span></div>
 					<code>/*hl*/ let innerText = classElement && classElement.innerText;</code>
-					<div><code class="mr-3">/*hl*/ assert(innerText === 'my text');</code><span id="tests02"></span></div>
+					<div><code class="mr-3">/*hl*/ assert(innerText === 'my text')</code><span id="tests02"></span></div>
 				</div>
+
 			</div>
 		</div>
 		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
 
 			<code class="border-b border-gray-300">Source</code>
-			<div id="editor" class="w-full h-1/2">(defcomponent ^:endpoint main [req]
-  [:div#fix-my-id.and-my-class "fix my text"])</div>
+			<div id="editor" class="w-full h-1/2">#_(defcomponent ^:endpoint main [req]
+  [:div#fix-my-id.and-my-class "fix my text"])
+
+(defcomponent ^:endpoint main [req]
+  [:div#my-id.my-class "my text"])
+			</div>
 
   		<div class="border-b border-gray-300 mb-6">
 	  		<code>Code Output</code>
   		</div>
 			<div id="output"> </div>
+		</div>
+	</div>
+
+	<div id="problem2" class="border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
+		<!-- left half -->
+		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
+			hello
 		</div>
 	</div>
 </div>
