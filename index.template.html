@@ -7,14 +7,13 @@
 	<link href="styles.css" rel="stylesheet">
 	<link rel="icon" type="image/x-icon" href="logo_dark.svg">
 </head>
-<body hx-ext="include-vals">
+<body hx-ext="htmx-test">
 <!-- body width -->
 <div class="xl:w-[1080px] lg:w-[980px] md:w-[700px] sm:w-[600px] w-full mx-auto">
 	<!-- page 1 -->
 	<div class="border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
 		<!-- left half -->
 		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
-			<!-- intro -->
 			<!-- header -->
 			<div id="intro" class="p-3">
 				<h4 class="text-2xl font-semibold mb-5">SPAs without Javascript</h4>
@@ -52,9 +51,10 @@
 				<button
 					id="tests0-run"
 					class="mb-5 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-					include-vals="code: editor.getValue(), tests: '#tests0'"
 					hx-post="http://localhost:8787/main"
 					hx-target="#output"
+					hx-after="#tests0"
+					hx-editor="editor"
 				>
 					Run tests
 				</button>
@@ -70,9 +70,9 @@
 				</p>
 
 				<div id="tests0" class="flex flex-col gap-2">
-					<code>/*hl*/ let idElement = document.querySelector('#my-id');</code>
+					<code>/*hl*/ let idElement = $('#my-id');</code>
 					<div><code class="mr-3">/*hl*/ assert(exists(idElement))</code><span id="tests00"></span></div>
-					<code>/*hl*/ let classElement = document.querySelector('.my-class');</code>
+					<code>/*hl*/ let classElement = $('.my-class');</code>
 					<div><code class="mr-3">/*hl*/ assert(exists(classElement))</code><span id="tests01"></span></div>
 					<code>/*hl*/ let innerText = classElement && classElement.innerText;</code>
 					<div><code class="mr-3">/*hl*/ assert(innerText === 'my text')</code><span id="tests02"></span></div>
@@ -100,18 +100,31 @@
 	<div id="problem2" class="border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
 		<!-- left half -->
 		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
-			hello
+			<!-- header -->
+			<div class="p-3">
+  			<h4 class="text-2xl font-semibold mb-5">You say 'Goodbye' and I say 'Hello'</h4>
+	  		  <p class="mb-3">
+		  	    The key idea of SimpleUI is to expose UI components as endpoints.  Each one can update on
+			  		its own, just as if it was a frontend component.  Unlike with frontend frameworks there
+				  	is no js bundle to load.
+  				</p>
+	  		  <p class="mb-3">
+		  			Fix the code so that 'Goodbye' becomes 'Hello'.
+			  	</p>
+			</div>
 		</div>
 	</div>
 </div>
 <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
 <script src="https://unpkg.com/htmx.org@1.9.8"></script>
-<script src="https://unpkg.com/htmx.org/dist/ext/include-vals.js"></script>
+<script src="htmx-test.js"></script>
 <script src="ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-	var editor = ace.edit("editor");
-	editor.session.setMode("ace/mode/clojure");
-</script>
 <script src="tests.js"></script>
+<script>
+	var editor = ace.edit('editor');
+	editor.session.setMode('ace/mode/clojure');
+	editors = {editor};
+	// _hyperscript.evaluate('take .hidden from #problem1 for #intro');
+</script>
 </body>
 </html>

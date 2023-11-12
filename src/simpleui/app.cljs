@@ -30,9 +30,6 @@
 
 ((-> (reitit) r/router r/ring-handler) request)")
 
-(defn script-body [tests]
-	(format "<script>evalDiv('%s')</script>" tests))
-
 (defn interpret [{:keys [params] :as req}]
 	(let [{:keys [code tests]} params
 				req (assoc req :params (dissoc params :code :tests))
@@ -45,12 +42,10 @@
 																		'ctmx.core ctmx-core
 																		'ctmx.rt ctmx-rt
 																		'ctmx.render ctmx-render
-																		'reitit.ring reitit-ring}})
-				resp (->> code
-									(format src-wrap)
-									(sci/eval-string* ctx))]
-		(cond-> resp
-						(-> resp :status (= 200)) (update :body #(str % "\n" (script-body tests))))))
+																		'reitit.ring reitit-ring}})]
+		(->> code
+				 (format src-wrap)
+				 (sci/eval-string* ctx))))
 
 (defn u []
 	(let [ctx (sci/init {:namespaces {}})]

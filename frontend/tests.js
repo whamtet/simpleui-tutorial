@@ -5,8 +5,10 @@ let testId = '';
 let assertCounter = 0;
 let allPass = true;
 
+const $ = x => document.querySelector(x);
+
 const assert = test => {
-	let resultDiv = document.querySelector(testId + assertCounter);
+	let resultDiv = $(testId + assertCounter);
 	resultDiv.innerHTML = test ? passSpan : failSpan;
 	assertCounter++;
 	allPass &= test;
@@ -22,11 +24,11 @@ const evalDiv = id => {
 		el.outerHTML = '';
 	}
 
-	const codeDiv = document.querySelector(id);
+	const codeDiv = $(id);
 	eval(`(async () => {${codeDiv.innerText}})()`);
 
 	if (allPass) {
-		document.querySelector(id + '-run').classList.add('hidden');
-		document.querySelector(id + '-finish').classList.remove('hidden');
+		$(id + '-run').classList.add('hidden');
+		$(id + '-finish').classList.remove('hidden');
 	}
 };
