@@ -46,9 +46,8 @@ htmx.defineExtension('htmx-test', {
 	},
 	onEvent: function(name, evt) {
 		if (name === 'htmx:configRequest') {
-			if (!evt.detail.path.startsWith('http')) {
-				evt.detail.path = 'http://localhost:8787/' + evt.detail.path;
-			}
+			const backend = location.host === 'localhost:8000' ? 'http://localhost:8787/' : "https://simpleui.simpleui.workers.dev/"
+			evt.detail.path = backend + evt.detail.path;
 		} else if (name === 'htmx:afterSettle') {
 			const originalTrigger = evt.detail.requestConfig.elt;
 			const after = originalTrigger.getAttribute('hx-after');

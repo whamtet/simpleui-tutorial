@@ -23,9 +23,6 @@
 
 (defsnippet header)
 
-(def local-endpoint "http://localhost:8787")
-(def remote-endpoint "https://simpleui.simpleui.workers.dev")
-
 (defn -main
 	[& [watch?]]
 	(let [chunks (.split (slurp "index.template.html") "/*hl*/ ")
@@ -33,5 +30,4 @@
 		(spit
 		 "frontend/index.html"
 		 (cond-> highlighted
-						 true (.replaceAll "<!-- header -->" header)
-						 (not watch?) (.replaceAll local-endpoint remote-endpoint)))))
+						 true (.replaceAll "<!-- header -->" header)))))
