@@ -31,6 +31,10 @@ let currentEditor;
 let waiting;
 
 const response = () => new Promise(resolve => waiting = resolve);
+const click = el => {
+	el.click();
+	return response();
+};
 
 htmx.defineExtension('htmx-test', {
 	encodeParameters: function(xhr, parameters, elt) {

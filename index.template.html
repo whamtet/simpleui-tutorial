@@ -136,8 +136,7 @@
 					<code>/*hl*/ greetInput.value = 'Fred';</code>
 					<code>/*hl*/ let greetSubmit = $('#submit-greeting');</code>
 					<div><code class="mr-3">/*hl*/ assert(exists(greetSubmit))</code><span id="tests11"></span></div>
-					<code>/*hl*/ greetSubmit.click();</code>
-					<code>/*hl*/ await response();</code>
+					<code>/*hl*/ await click(greetSubmit);</code>
 					<code>/*hl*/ let responseDiv = $('#response');</code>
 					<div><code class="mr-3">/*hl*/ assert(exists(responseDiv))</code><span id="tests12"></span></div>
 					<div><code class="mr-3">/*hl*/ assert(responseDiv.innerText === 'Hello Fred')</code><span id="tests13"></span></div>
@@ -153,7 +152,7 @@
 (defcomponent ^:endpoint main [req]
  [:form {:hx-post "greeting" :hx-target "#response"}
   [:label "What is your name?"]
-  [:input#greet.mr {:type "text" :name "my-name"}]
+  [:input#greet {:type "text" :name "my-name"}]
   [:input#submit-greeting {:type "submit"}]
   (greeting req "")])
 			</div>
