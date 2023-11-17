@@ -15,6 +15,14 @@ a {
 		color: #97B3F8;
 }
 
+b {
+		@apply font-bold
+}
+
+i {
+		@apply font-italic
+}
+
 .hljs {
 		background: #F3F3F3;
 		color: #444;

@@ -27,7 +27,6 @@ function urlEncode(values) {
 	return returnStr;
 }
 
-let currentEditor;
 let waiting;
 
 const response = () => new Promise(resolve => waiting = resolve);
@@ -36,13 +35,15 @@ const click = el => {
 	return response();
 };
 
+const getEditorParent = e => (e.id && e.id.startsWith('output')) ? e : getEditorParent(e.parentElement);
+
 htmx.defineExtension('htmx-test', {
 	encodeParameters: function(xhr, parameters, elt) {
-		const editorKey = elt.getAttribute('hx-editor');
-		if (editorKey) {
-			currentEditor = editors[editorKey];
-		} // else it was set at the start of the test
-		return urlEncode({...parameters, code: currentEditor.getValue()});
+		const hxTarget = elt.getAttribute('hx-target');
+		const target = hxTarget ? document.querySelector(hxTarget) : elt;
+		const editorParent = getEditorParent(target);
+		const editorKey = editorParent.id.replace('output', 'editor');
+		return urlEncode({...parameters, code: editors[editorKey].getValue()});
 	},
 	onEvent: function(name, evt) {
 		if (name === 'htmx:configRequest') {

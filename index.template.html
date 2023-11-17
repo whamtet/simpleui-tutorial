@@ -54,7 +54,6 @@
 					hx-post="main"
 					hx-target="#output0"
 					hx-after="#tests0"
-					hx-editor="editor0"
 				>
 					Run tests
 				</button>
@@ -83,7 +82,7 @@
 		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
 
 			<code class="border-b border-gray-300">Source</code>
-			<div id="editor0" class="w-full h-1/2">(defcomponent ^:endpoint main [req]
+			<div id="editor0" class="editor w-full h-1/2">(defcomponent ^:endpoint main [req]
   [:div#fix-my-id.and-my-class "fix my text"])
 			</div>
 
@@ -115,7 +114,6 @@
 					hx-post="main"
 					hx-target="#output1"
 					hx-after="#tests1"
-					hx-editor="editor1"
 				>
 					Run tests
 				</button>
@@ -146,7 +144,7 @@
 		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
 
 			<code class="border-b border-gray-300">Source</code>
-			<div id="editor1" class="w-full h-1/2">(defcomponent ^:endpoint greeting [req my-name]
+			<div id="editor1" class="editor w-full h-1/2">(defcomponent ^:endpoint greeting [req my-name]
  [:div#response "Goodbye " my-name])
 
 (defcomponent ^:endpoint main [req]
@@ -163,20 +161,82 @@
 			<div id="output1"> </div>
 		</div>
 	</div>
+	<div id="problem3" class="border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
+		<!-- left half -->
+		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
+			<!-- header -->
+			<div class="p-3">
+				<h4 class="text-2xl font-semibold mb-5">
+					<a href="https://htmx.org" target="_blank">HTMX</a> Frontend
+				</h4>
+				<p class="mb-3">
+					Htmx is what gives SimpleUI its superpowers. In particular you can use
+					<a href="https://htmx.org/reference/#attributes" target="_blank">htmx attributes</a>
+					which start with <b>hx-*</b> to control UI.
+				</p>
+				<p class="mb-5 border-b">
+					By default each <i>defcomponent</i> updates itself.
+					Set <b>hx-target</b> so that it updates the adjacent div instead.
+					Tests will start when you click the button under <code>Code Output</code>.
+				</p>
+
+				<div
+					id="tests2-run"
+					class="hidden"
+					hx-post="main"
+					hx-target="#output2"
+				>
+				</div>
+
+				<p id="tests2-finish" class="hidden pb-5 mb-2 border-b border-gray-300">
+					Good effort!
+					<a
+						href="#problem4"
+						class="ml-6 rounded-lg bg-clj-green py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-green/20 transition-all hover:shadow-lg hover:shadow-clj-green/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					>
+						Next problem
+					</a>
+				</p>
+
+				<div id="tests2" class="flex flex-col gap-2">
+					<code>/*hl*/ let greetInput = $('#greet');</code>
+					<div><code class="mr-3">/*hl*/ assert(exists(greetInput))</code><span id="tests20"></span></div>
+				</div>
+			</div>
+		</div>
+		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
+
+			<code class="border-b border-gray-300">Source</code>
+			<div id="editor2" class="editor w-full h-1/2">(defcomponent ^:endpoint component1 [req]
+  [:div.component1 "hi"])
+
+(defcomponent ^:endpoint component2 [req]
+  [:div.component2 "there"])
+
+(defcomponent ^:endpoint main [req]
+  [:div
+    [:button {:hx-post "component1"
+				      :hx-target ".component1"}
+      "Click me!"]
+		(component1 req)
+		(component2 req)])
+			</div>
+
+			<div class="border-b border-gray-300 mb-6">
+				<code>Code Output</code>
+			</div>
+			<div id="output2"> </div>
+		</div>
+	</div>
 </div>
 <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
 <script src="https://unpkg.com/htmx.org@1.9.8"></script>
 <script src="htmx-test.js"></script>
 <script src="ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="tests.js"></script>
+<script src="editors.js"></script>
 <script>
-	const editors = {};
-	for (let i = 0; i < 2; i++) {
-		const editor = ace.edit('editor' + i);
-		editor.session.setMode('ace/mode/clojure');
-		editors['editor' + i] = editor;
-	}
-	_hyperscript.evaluate('take .hidden from #problem1 for #intro');
+	// _hyperscript.evaluate('take .hidden from #problem1 for #intro');
 </script>
 </body>
 </html>
