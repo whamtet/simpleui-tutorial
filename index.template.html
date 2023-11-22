@@ -182,9 +182,9 @@
 
 				<div
 					id="tests2-run"
-					class="hidden"
 					hx-post="main"
 					hx-target="#output2"
+					hx-trigger="intersect,click delay:0.5s"
 				>
 				</div>
 
@@ -207,7 +207,7 @@
 		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
 
 			<code class="border-b border-gray-300">Source</code>
-			<div id="editor2" class="editor w-full h-1/2">(defcomponent ^:endpoint component1 [req]
+			<div id="editor2" class="editor w-full h-1/2" watch>(defcomponent ^:endpoint component1 [req]
   [:div.component1 "hi"])
 
 (defcomponent ^:endpoint component2 [req]

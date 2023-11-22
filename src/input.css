@@ -20,7 +20,7 @@ b {
 }
 
 i {
-		@apply font-italic
+		@apply italic
 }
 
 .hljs {
