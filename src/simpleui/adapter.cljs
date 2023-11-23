@@ -21,5 +21,5 @@
 (defn <-req [{:keys [body status headers]}]
 	(->> {:status status
 				:headers headers}
-			 js->clj
+			 clj->js
 			 (js/Response. body)))
