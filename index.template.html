@@ -54,6 +54,7 @@
 					hx-post="main"
 					hx-target="#output0"
 					hx-after="#tests0"
+					hx-swap="innerHTML"
 				>
 					Run tests
 				</button>
@@ -114,6 +115,7 @@
 					hx-post="main"
 					hx-target="#output1"
 					hx-after="#tests1"
+					hx-swap="innerHTML"
 				>
 					Run tests
 				</button>
@@ -185,6 +187,7 @@
 					hx-post="main"
 					hx-target="#output2"
 					hx-trigger="intersect,click delay:0.5s"
+					hx-swap="innerHTML"
 				>
 				</div>
 
@@ -207,19 +210,14 @@
 		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
 
 			<code class="border-b border-gray-300">Source</code>
-			<div id="editor2" class="editor w-full h-1/2" watch>(defcomponent ^:endpoint component1 [req]
-  [:div.component1 "hi"])
-
-(defcomponent ^:endpoint component2 [req]
-  [:div.component2 "there"])
+			<div id="editor2" class="editor w-full h-1/2" watch>(defcomponent ^:endpoint subcomponent [req]
+  [:button {:hx-post "subcomponent"}
+    "Click me"])
 
 (defcomponent ^:endpoint main [req]
   [:div
-    [:button {:hx-post "component1"
-				      :hx-target ".component1"}
-      "Click me!"]
-		(component1 req)
-		(component2 req)])
+    [:div#update-me "Update me instead!"]
+    (subcomponent req)])
 			</div>
 
 			<div class="border-b border-gray-300 mb-6">

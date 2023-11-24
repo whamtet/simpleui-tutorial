@@ -60,3 +60,6 @@ htmx.defineExtension('htmx-test', {
 		}
 	}
 });
+
+htmx.config.defaultSwapStyle = 'outerHTML';
+htmx.config.defaultSettleDelay = 0;
