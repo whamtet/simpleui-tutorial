@@ -11,7 +11,7 @@
 <!-- body width -->
 <div class="xl:w-[1080px] lg:w-[980px] md:w-[700px] sm:w-[600px] w-full mx-auto">
 	<!-- page 1 -->
-	<div class="border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
+	<div id="problem1" class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
 		<!-- left half -->
 		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
 			<!-- header -->
@@ -28,9 +28,9 @@
 
 				<button
 					class="ml-6 rounded-lg bg-clj-blue py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-blue/20 transition-all hover:shadow-lg hover:shadow-clj-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-					_="on click take .hidden from #problem1 for #intro"
+					_="on click take .hidden from #subproblem1 for #intro"
 				>
-					Get Started
+					Start Tutorial
 				</button>
 
 				<a
@@ -40,7 +40,7 @@
 					Docs
 				</a>
 			</div>
-			<div id="problem1" class="p-3 hidden">
+			<div id="subproblem1" class="p-3 hidden">
 				<h4 class="text-2xl font-semibold mb-5">Display with Hiccup</h4>
 				<p class="mb-3">
 					Simple UI uses
@@ -83,7 +83,7 @@
 
 			<code class="border-b border-gray-300">Source</code>
 			<div id="editor0" class="editor w-full h-1/2">(defcomponent ^:endpoint main [req]
-  [:div#fix-my-id.and-my-class "fix my text"])
+  [:div#my-id.my-class "my text"])
 			</div>
 
   		<div class="border-b border-gray-300 mb-6">
@@ -93,7 +93,7 @@
 		</div>
 	</div>
 
-	<div id="problem2" class="border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
+	<div id="problem2" class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
 		<!-- left half -->
 		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
 			<!-- header -->
@@ -161,7 +161,7 @@
 			<div id="output1"> </div>
 		</div>
 	</div>
-	<div id="problem3" class="border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
+	<div id="problem3" class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
 		<!-- left half -->
 		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
 			<!-- header -->
@@ -229,6 +229,7 @@
 		</div>
 	</div>
 </div>
+<script src="router.js"></script>
 <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
 <script src="https://unpkg.com/htmx.org@1.9.8"></script>
 <script src="htmx-test.js"></script>
