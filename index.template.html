@@ -90,7 +90,7 @@
   		<div class="border-b border-gray-300 mb-6">
 	  		<code>Code Output</code>
   		</div>
-			<div id="output0"> </div>
+			<div id="output0" class="output"> </div>
 		</div>
 	</div>
 
@@ -160,7 +160,7 @@
 			<div class="border-b border-gray-300 mb-6">
 				<code>Code Output</code>
 			</div>
-			<div id="output1"> </div>
+			<div id="output1" class="output"> </div>
 		</div>
 	</div>
 	<div id="problem3" class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
@@ -223,7 +223,72 @@
 			<div class="border-b border-gray-300 mb-6">
 				<code>Code Output</code>
 			</div>
-			<div id="output2" hx-after="#tests2"> </div>
+			<div id="output2" class="output" hx-after="#tests2"> </div>
+		</div>
+	</div>
+	<div id="problem4" class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
+		<!-- left half -->
+		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
+			<!-- header -->
+			<div class="p-3">
+				<h4 class="text-2xl font-semibold mb-5">
+					Casting Arguments
+				</h4>
+				<p class="mb-3">
+					By default SimpleUI submits http parameters with regular url encoding so that they appear
+					as strings on the server.  It can be convenient to
+					<a href="https://whamtet.github.io/ctmx/doc/#parameter-casting"
+						 target="_blank">cast</a> to other forms such as String or Boolean when needed.
+				</p>
+				<p class="mb-3">
+					Update the code so that the button increments the counter instead of decrementing it.
+				</p>
+
+				<button
+					id="tests3-run"
+					class="mb-5 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					hx-post="main"
+					hx-target="#output3"
+					hx-after="#tests3"
+					hx-swap="innerHTML"
+				>
+					Run tests
+				</button>
+
+				<p id="tests3-finish" class="hidden pb-5 mb-2">
+					Good effort!
+					<a
+						href="#problem5"
+						class="ml-6 rounded-lg bg-clj-green py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-green/20 transition-all hover:shadow-lg hover:shadow-clj-green/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					>
+						Next problem
+					</a>
+				</p>
+
+				<div id="tests3" class="flex flex-col gap-2">
+					<code>/*hl*/ for (let i = 0; i < 5; i++) {</code>
+					<code>/*hl*/   await click($('#change-number'));</code>
+					<code>/*hl*/ }</code>
+					<code>/*hl*/ const finalValue = $('#curr-value').innerText;</code>
+					<div><code class="mr-3">/*hl*/ assert(finalValue === '10')</code><span id="tests30"></span></div>
+				</div>
+			</div>
+		</div>
+		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
+
+			<code class="border-b border-gray-300">Source</code>
+			<div id="editor3" class="editor w-full h-1/2">(defcomponent ^:endpoint main [req ^:long count]
+  (let [count (or count 5)] ;; default
+    [:form {:hx-post "main"}
+      [:div#curr-value count]
+      [:input {:type "hidden" :name "count" :value (dec count)}]
+      [:input#change-number {:type "submit"}]]))
+			</div>
+
+			<div class="border-b border-gray-300 mb-6">
+				<code>Code Output</code>
+			</div>
+			<div id="output3" class="output"> </div>
 		</div>
 	</div>
 </div>
