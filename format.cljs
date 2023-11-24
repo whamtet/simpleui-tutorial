@@ -15,8 +15,15 @@
 	(cons x (map f items)))
 
 (defn format-head [chunk]
-	(let [[code] (.split chunk "</code>")]
-		(->> code hljs/highlightAuto .-value (.replace chunk code))))
+	(let [[code] (.split chunk "</code>")
+				substitute (str (gensym))
+				highlighted (-> code
+												(.replaceAll "$$" substitute) ;; bug in hljs
+												(hljs/highlight #js {:language "javascript"})
+												.-value)]
+		(-> chunk
+				(.replace code highlighted)
+				(.replaceAll substitute "$$$$"))))
 
 (defmacro defsnippet [sym]
 	`(def ~sym (slurp ~(format "src/snippets/%s.html" sym))))

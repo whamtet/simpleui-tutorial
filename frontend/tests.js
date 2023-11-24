@@ -5,6 +5,7 @@ let testId = '';
 let assertCounter = 0;
 
 const $ = x => document.querySelector(x);
+const $$ = x => document.querySelectorAll(x);
 
 const assert = test => {
 	let resultDiv = $(testId + assertCounter);

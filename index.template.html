@@ -59,7 +59,7 @@
 					Run tests
 				</button>
 
-				<p id="tests0-finish" class="hidden pb-5 mb-2 border-b border-gray-300">
+				<p id="tests0-finish" class="hidden pb-5 mb-2">
 					Good effort!
 					<a
 						href="#problem2"
@@ -120,7 +120,7 @@
 					Run tests
 				</button>
 
-				<p id="tests1-finish" class="hidden pb-5 mb-2 border-b border-gray-300">
+				<p id="tests1-finish" class="hidden pb-5 mb-2">
 					Good effort!
 					<a
 						href="#problem3"
@@ -178,7 +178,7 @@
 				</p>
 				<p class="mb-5 border-b">
 					By default each <i>defcomponent</i> updates itself.
-					Set <b>hx-target</b> so that it updates the adjacent div instead.
+					Set <a href="https://htmx.org/attributes/hx-target/" target="_blank">hx-target</a> so that it updates the adjacent div instead.
 					Tests will start when you click the button under <code>Code Output</code>.
 				</p>
 
@@ -191,7 +191,7 @@
 				>
 				</div>
 
-				<p id="tests2-finish" class="hidden pb-5 mb-2 border-b border-gray-300">
+				<p id="tests2-finish" class="hidden pb-5 mb-2">
 					Good effort!
 					<a
 						href="#problem4"
@@ -202,8 +202,8 @@
 				</p>
 
 				<div id="tests2" class="flex flex-col gap-2">
-					<code>/*hl*/ let greetInput = $('#greet');</code>
-					<div><code class="mr-3">/*hl*/ assert(exists(greetInput))</code><span id="tests20"></span></div>
+					<code>/*hl*/ let subcomponents = $$('.subcomponent');</code>
+					<div><code class="mr-3">/*hl*/ assert(subcomponents.length === 2)</code><span id="tests20"></span></div>
 				</div>
 			</div>
 		</div>
@@ -211,19 +211,19 @@
 
 			<code class="border-b border-gray-300">Source</code>
 			<div id="editor2" class="editor w-full h-1/2" watch>(defcomponent ^:endpoint subcomponent [req]
-  [:button {:hx-post "subcomponent"}
+  [:button.subcomponent {:hx-post "subcomponent"}
     "Click me"])
 
 (defcomponent ^:endpoint main [req]
   [:div
-    [:div#update-me "Update me instead!"]
-    (subcomponent req)])
+    (subcomponent req)
+    [:div#update-me "Update me instead!"]])
 			</div>
 
 			<div class="border-b border-gray-300 mb-6">
 				<code>Code Output</code>
 			</div>
-			<div id="output2"> </div>
+			<div id="output2" hx-after="#tests2"> </div>
 		</div>
 	</div>
 </div>

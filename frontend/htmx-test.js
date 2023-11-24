@@ -35,13 +35,13 @@ const click = el => {
 	return response();
 };
 
-const getEditorParent = e => (e.id && e.id.startsWith('output')) ? e : getEditorParent(e.parentElement);
+const getOutputParent = e => (e && e.id && e.id.startsWith('output')) ? e : e && getOutputParent(e.parentElement);
 
 htmx.defineExtension('htmx-test', {
 	encodeParameters: function(xhr, parameters, elt) {
 		const hxTarget = elt.getAttribute('hx-target');
 		const target = hxTarget ? document.querySelector(hxTarget) : elt;
-		const editorParent = getEditorParent(target);
+		const editorParent = getOutputParent(target);
 		const editorKey = editorParent.id.replace('output', 'editor');
 		return urlEncode({...parameters, code: editors[editorKey].getValue()});
 	},
@@ -51,9 +51,16 @@ htmx.defineExtension('htmx-test', {
 			evt.detail.path = backend + evt.detail.path;
 		} else if (name === 'htmx:afterSettle') {
 			const originalTrigger = evt.detail.requestConfig.elt;
-			const after = originalTrigger.getAttribute('hx-after');
-			if (after) {
-				evalDiv(after);
+			let hxAfter = originalTrigger.getAttribute('hx-after');
+			if (!hxAfter && (!originalTrigger.id || !originalTrigger.id.endsWith('-run'))) {
+				const outputParent = getOutputParent(evt.detail.elt);
+				if (outputParent) {
+					hxAfter = outputParent.getAttribute('hx-after');
+				}
+			}
+
+			if (hxAfter) {
+				evalDiv(hxAfter);
 			} else if (waiting) {
 				waiting();
 			}
