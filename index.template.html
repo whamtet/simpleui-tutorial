@@ -84,7 +84,7 @@
 
 			<code class="border-b border-gray-300">Source</code>
 			<div id="editor0" class="editor w-full h-1/2">(defcomponent ^:endpoint main [req]
-  [:div#my-id.my-class "my text"])
+  [:div#fix-my-id.and-my-class "fix my text"])
 			</div>
 
   		<div class="border-b border-gray-300 mb-6">
@@ -176,7 +176,7 @@
 					<a href="https://htmx.org/reference/#attributes" target="_blank">htmx attributes</a>
 					which start with <b>hx-*</b> to control UI.
 				</p>
-				<p class="mb-5 border-b">
+				<p class="mb-5 pb-3 border-b border-gray-300">
 					By default each <i>defcomponent</i> updates itself.
 					Set <a href="https://htmx.org/attributes/hx-target/" target="_blank">hx-target</a> so that it updates the adjacent div instead.
 					Tests will start when you click the button under <code>Code Output</code>.

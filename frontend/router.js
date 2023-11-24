@@ -9,5 +9,7 @@ const router = () => {
 	}
 }
 
-onhashchange = router;
-router();
+if (location.host !== 'localhost:8000') {
+	onhashchange = router;
+	router();
+}
