@@ -6,6 +6,7 @@ let assertCounter = 0;
 
 const $ = x => document.querySelector(x);
 const $$ = x => document.querySelectorAll(x);
+const src = x => $(x) && $(x).getAttribute('src');
 
 const assert = test => {
 	let resultDiv = $(testId + assertCounter);
@@ -15,7 +16,7 @@ const assert = test => {
 		throw 'uh oh';
 	}
 };
-const exists = x => x !== null;
+const exists = x => typeof x === 'string' ? exists($(x)) : x !== null;
 
 const evalDiv = async id => {
 	testId = id;

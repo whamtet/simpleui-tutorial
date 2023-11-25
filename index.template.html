@@ -94,7 +94,11 @@
 		</div>
 	</div>
 
-	<div id="problem2" class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
+	<div
+		id="problem2"
+		class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]"
+		title="Goodbye, Hello"
+	>
 		<!-- left half -->
 		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
 			<!-- header -->
@@ -134,9 +138,8 @@
 					<code>/*hl*/ let greetInput = $('#greet');</code>
 					<div><code class="mr-3">/*hl*/ assert(exists(greetInput))</code><span id="tests10"></span></div>
 					<code>/*hl*/ greetInput.value = 'Fred';</code>
-					<code>/*hl*/ let greetSubmit = $('#submit-greeting');</code>
-					<div><code class="mr-3">/*hl*/ assert(exists(greetSubmit))</code><span id="tests11"></span></div>
-					<code>/*hl*/ await click(greetSubmit);</code>
+					<div><code class="mr-3">/*hl*/ assert(exists('#submit-greeting'))</code><span id="tests11"></span></div>
+					<code>/*hl*/ await click('#submit-greeting');</code>
 					<code>/*hl*/ let responseDiv = $('#response');</code>
 					<div><code class="mr-3">/*hl*/ assert(exists(responseDiv))</code><span id="tests12"></span></div>
 					<div><code class="mr-3">/*hl*/ assert(responseDiv.innerText === 'Hello Fred')</code><span id="tests13"></span></div>
@@ -163,7 +166,11 @@
 			<div id="output1" class="output"> </div>
 		</div>
 	</div>
-	<div id="problem3" class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
+	<div
+		id="problem3"
+		class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]"
+		title="HTMX Frontend"
+	>
 		<!-- left half -->
 		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
 			<!-- header -->
@@ -226,7 +233,11 @@
 			<div id="output2" class="output" hx-after="#tests2"> </div>
 		</div>
 	</div>
-	<div id="problem4" class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]">
+	<div
+		id="problem4"
+		class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]"
+		title="Casting"
+	>
 		<!-- left half -->
 		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
 			<!-- header -->
@@ -238,7 +249,7 @@
 					By default SimpleUI submits http parameters with regular url encoding so that they appear
 					as strings on the server.  It can be convenient to
 					<a href="https://whamtet.github.io/ctmx/doc/#parameter-casting"
-						 target="_blank">cast</a> to other forms such as String or Boolean when needed.
+						 target="_blank">cast</a> to other forms such as Long or Boolean when needed.
 				</p>
 				<p class="mb-3">
 					Update the code so that the button increments the counter instead of decrementing it.
@@ -255,15 +266,17 @@
 					Run tests
 				</button>
 
-				<p id="tests3-finish" class="hidden pb-5 mb-2">
-					Good effort!
+				<div id="tests3-finish" class="hidden pb-5 mb-2">
+					<div class="mb-4">
+						Great job.  Try hitting Submit a few more times to see how it works.
+					</div>
 					<a
 						href="#problem5"
-						class="ml-6 rounded-lg bg-clj-green py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-green/20 transition-all hover:shadow-lg hover:shadow-clj-green/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+						class="rounded-lg bg-clj-green py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-green/20 transition-all hover:shadow-lg hover:shadow-clj-green/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
 					>
 						Next problem
 					</a>
-				</p>
+				</div>
 
 				<div id="tests3" class="flex flex-col gap-2">
 					<code>/*hl*/ for (let i = 0; i < 5; i++) {</code>
@@ -289,6 +302,78 @@
 				<code>Code Output</code>
 			</div>
 			<div id="output3" class="output"> </div>
+		</div>
+	</div>
+	<div
+		id="problem5"
+		class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]"
+		title="Journey in the Dark"
+	>
+		<!-- left half -->
+		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
+			<!-- header -->
+			<div class="p-3">
+				<h4 class="text-2xl font-semibold mb-5">
+					A Journey in the Dark
+				</h4>
+				<p class="mb-5">
+					<i>The Doors of Durin, Lord of Moria. Speak, friend, and enter.</i>
+				</p>
+
+				<button
+					id="tests4-run"
+					class="mb-5 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					hx-post="main"
+					hx-target="#output4"
+					hx-after="#tests4"
+					hx-swap="innerHTML"
+					hx-trigger="intersect,click"
+				>
+					Run tests
+				</button>
+
+				<p id="tests4-finish" class="hidden pb-5 mb-2">
+					Good effort!
+					<a
+						href="#end"
+						class="ml-6 rounded-lg bg-clj-green py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-green/20 transition-all hover:shadow-lg hover:shadow-clj-green/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+					>
+						Enter the mines
+					</a>
+				</p>
+
+				<div id="tests4" class="flex flex-col gap-2">
+					<div><code class="mr-3">/*hl*/ assert(exists('#password'))</code><span id="tests40"></span></div>
+					<code>/*hl*/ $('#password').value = 'Edro, edro!';</code>
+					<div><code class="mr-3">/*hl*/ assert(exists('#speak'))</code><span id="tests41"></span></div>
+					<code>/*hl*/ await click('#speak');</code>
+					<div><code class="mr-3">/*hl*/ assert(src('.door') === '/moria_closed.jpg')</code><span id="tests42"></span></div>
+					<code>/*hl*/ $('#password').value = 'Mellon!'</code>
+					<code>/*hl*/ await click('#speak');</code>
+					<div><code class="mr-3">/*hl*/ assert(src('.door') === '/moria_open.gif')</code><span id="tests43"></span></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="sm:w-1/2 w-full p-3 h-[700px]">
+
+			<code class="border-b border-gray-300">Source</code>
+			<div id="editor4" class="editor w-full h-[230px]">(def moria-closed [:img.door {:src "/moria_closed.jpg"}])
+(def moria-open [:img.door {:src "/moria_open.gif"}])
+
+(defcomponent ^:endpoint main [req password]
+  [:form {:hx-post "main"}
+    moria-closed
+    [:input#password {:type "text"
+                      :name "password"
+                      :value password}]
+    [:input#speak {:type "submit"}]])
+</div>
+
+			<div class="border-b border-gray-300 mb-6">
+				<code>Code Output</code>
+			</div>
+			<div id="output4" class="output"> </div>
 		</div>
 	</div>
 </div>

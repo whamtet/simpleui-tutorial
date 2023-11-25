@@ -31,6 +31,9 @@ let waiting;
 
 const response = () => new Promise(resolve => waiting = resolve);
 const click = el => {
+	if (typeof el === 'string') {
+		return click($(el));
+	}
 	el.click();
 	return response();
 };
