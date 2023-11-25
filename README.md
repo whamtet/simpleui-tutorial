@@ -15,7 +15,7 @@ npm run dev
 ```bash
 ls index.template.html | entr -s 'npm run format-watch'
 npm run styles-watch
-python -m http.server
+cd frontend && python -m http.server
 ```
 
 ### Deploy
@@ -32,4 +32,4 @@ npm run format
 npm run styles
 ```
 
-Then upload to CDN (not automated yet).
+Then upload to CDN (not automated).
