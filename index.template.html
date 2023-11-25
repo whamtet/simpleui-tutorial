@@ -28,7 +28,7 @@
 
 				<button
 					class="ml-6 rounded-lg bg-clj-blue py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-clj-blue/20 transition-all hover:shadow-lg hover:shadow-clj-blue/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-					_="on click take .hidden from #subproblem1 for #intro"
+					onclick="$('#subproblem1').classList.remove('hidden'); $('#intro').classList.add('hidden');"
 				>
 					Start Tutorial
 				</button>
@@ -74,8 +74,7 @@
 					<div><code class="mr-3">/*hl*/ assert(exists(idElement))</code><span id="tests00"></span></div>
 					<code>/*hl*/ let classElement = $('.my-class');</code>
 					<div><code class="mr-3">/*hl*/ assert(exists(classElement))</code><span id="tests01"></span></div>
-					<code>/*hl*/ let innerText = classElement.innerText;</code>
-					<div><code class="mr-3">/*hl*/ assert(innerText === 'my text')</code><span id="tests02"></span></div>
+					<div><code class="mr-3">/*hl*/ assert(classElement.innerText === 'my text')</code><span id="tests02"></span></div>
 				</div>
 
 			</div>
@@ -249,7 +248,7 @@
 					By default SimpleUI submits http parameters with regular url encoding so that they appear
 					as strings on the server.  It can be convenient to
 					<a href="https://whamtet.github.io/ctmx/doc/#parameter-casting"
-						 target="_blank">cast</a> to other forms such as Long or Boolean when needed.
+						 target="_blank">cast</a> to other forms such as <code>^:long</code> or <code>^:boolean</code> when needed.
 				</p>
 				<p class="mb-3">
 					Update the code so that the button increments the counter instead of decrementing it.
@@ -316,8 +315,11 @@
 				<h4 class="text-2xl font-semibold mb-5">
 					A Journey in the Dark
 				</h4>
-				<p class="mb-5">
+				<p class="mb-3">
 					<i>The Doors of Durin, Lord of Moria. Speak, friend, and enter.</i>
+				</p>
+				<p class="mb-5">
+					<i class="text-xs">I, Narvi, made them.  Celebrimbor of Hollin drew these signs.</i>
 				</p>
 
 				<button
@@ -376,16 +378,51 @@
 			<div id="output4" class="output"> </div>
 		</div>
 	</div>
+	<div
+		id="end"
+		class="page border border-gray-300 rounded-md shadow-xl flex flex-wrap my-[2vh]"
+	>
+		<!-- left half -->
+		<div class="sm:w-1/2 w-full sm:border-r sm:border-b-0 border-b border-gray-300 min-h-[96vh]">
+			<!-- header -->
+			<div class="p-3">
+				<h4 class="text-2xl font-semibold mb-5">
+					Next Steps
+				</h4>
+				<p class="mb-3">
+					Try setting up your own project!
+					The Kit framework provides an excellent starting point, follow the instructions
+					<a href="https://whamtet.github.io/ctmx/#getting-started" target="_blank">here</a>.
+				</p>
+				<p class="mb-3">
+					SimpleUI advertises as Javascript free, however this tutorial makes a small exception
+					to safely execute unknown code.  Read the details in the
+					<a href="https://github.com/whamtet/simpleui-tutorial" target="_blank">source</a>.
+				</p>
+
+			</div>
+		</div>
+		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
+
+			<div class="p-3">
+				<h4 class="text-2xl font-semibold mb-3">
+					Simple Made Easy
+				</h4>
+				<p class="mb-3">
+					A great talk.
+				</p>
+			</div>
+
+			<iframe class="w-full" height="315" src="https://www.youtube-nocookie.com/embed/SxdOUGdseq4?si=BTA5MdawOS53iPF5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+		</div>
+	</div>
 </div>
 <script src="router.js"></script>
-<script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
 <script src="https://unpkg.com/htmx.org@1.9.8"></script>
 <script src="htmx-test.js"></script>
 <script src="ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="tests.js"></script>
 <script src="editors.js"></script>
-<script>
-	// _hyperscript.evaluate('take .hidden from #problem1 for #intro');
-</script>
 </body>
 </html>

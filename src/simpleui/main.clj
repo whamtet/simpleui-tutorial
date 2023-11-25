@@ -13,6 +13,5 @@
 		   :output-dir "cljs"
   		 :browser-repl false
 	  	 :main 'simpleui.app
-			 :externs ["src/externs.js"]
 			 :target :bundle
   		 :watch-fn #(prn (sh "tput" "bel"))})))
