@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH4YKWC5VT"></script>
+		<script>
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+
+				gtag('config', 'G-ZH4YKWC5VT');
+		</script>
 	<meta charset="UTF-8">
 	<title>Simple UI</title>
 	<meta name="title" content="Simple UI" />
@@ -88,7 +97,7 @@
 		</div>
 		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
 
-			<code class="border-b border-gray-300">Source</code>
+			<!-- source-header -->
 			<div id="editor0" class="editor w-full h-1/2">(defcomponent ^:endpoint main [req]
   [:div#fix-my-id.and-my-class "fix my text"])
 			</div>
@@ -154,7 +163,7 @@
 		</div>
 		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
 
-			<code class="border-b border-gray-300">Source</code>
+			<!-- source-header -->
 			<div id="editor1" class="editor w-full h-1/2">(defcomponent ^:endpoint greeting [req my-name]
  [:div#response "Goodbye " my-name])
 
@@ -222,7 +231,7 @@
 		</div>
 		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
 
-			<code class="border-b border-gray-300">Source</code>
+			<!-- source-header -->
 			<div id="editor2" class="editor w-full h-1/2" watch>(defcomponent ^:endpoint subcomponent [req]
   [:button.subcomponent {:hx-post "subcomponent"}
     "Click me"])
@@ -295,7 +304,7 @@
 		</div>
 		<div class="sm:w-1/2 w-full p-3 min-h-[96vh]">
 
-			<code class="border-b border-gray-300">Source</code>
+			<!-- source-header -->
 			<div id="editor3" class="editor w-full h-1/2">(defcomponent ^:endpoint main [req ^:long count]
   (let [count (or count 5)] ;; default
     [:form {:hx-post "main"}
@@ -322,11 +331,8 @@
 				<h4 class="text-2xl font-semibold mb-5">
 					A Journey in the Dark
 				</h4>
-				<p class="mb-3">
+				<p class="mb-5">
 					<i>The Doors of Durin, Lord of Moria. Speak, friend, and enter.</i>
-				</p>
-				<p class="mb-5 text-xs">
-					I, Narvi, made them.  Celebrimbor of Hollin drew these signs.
 				</p>
 
 				<button
@@ -366,7 +372,7 @@
 
 		<div class="sm:w-1/2 w-full p-3 h-[700px]">
 
-			<code class="border-b border-gray-300">Source</code>
+			<!-- source-header -->
 			<div id="editor4" class="editor w-full h-[230px]">(def moria-closed [:img.door {:src "/moria_closed.jpg"}])
 (def moria-open [:img.door {:src "/moria_open.gif"}])
 

@@ -29,6 +29,7 @@
 	`(def ~sym (slurp ~(format "src/snippets/%s.html" sym))))
 
 (defsnippet header)
+(defsnippet source-header)
 
 (defn -main
 	[& [watch?]]
@@ -37,4 +38,5 @@
 		(spit
 		 "frontend/index.html"
 		 (cond-> highlighted
-						 true (.replaceAll "<!-- header -->" header)))))
+						 true (.replaceAll "<!-- header -->" header)
+						 true (.replaceAll "<!-- source-header -->" source-header)))))
