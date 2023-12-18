@@ -31,8 +31,8 @@
 ((-> (reitit) r/router r/ring-handler) request)")
 
 (defn interpret [{:keys [params] :as req}]
-	(let [{:keys [code tests]} params
-				req (assoc req :params (dissoc params :code :tests))
+	(let [{:keys [code]} params
+				req (assoc req :params (dissoc params :code))
 				user {'request (sci/new-var 'request req)}
 				simpleui-core (sci/copy-ns simpleui.core (sci/create-ns 'simpleui.core))
 				simpleui-rt (sci/copy-ns simpleui.rt (sci/create-ns 'simpleui.rt))
