@@ -15,7 +15,7 @@ npm run dev
 ```bash
 ls index.template.html | entr -s 'npm run format-watch'
 npm run styles-watch
-cd frontend && python -m http.server
+cd frontend && python3 -m http.server
 ```
 
 ### Deploy
